@@ -1,15 +1,11 @@
 #!/usr/bin/python3
-"""Basic Cache"""
+
+"""Basic dictionary"""
 
 from base_caching import BaseCaching
 
 class BasicCache(BaseCaching):
     """Basic Dictionary"""
-
-    def __init__(self):
-        """Initialize BasicCache"""
-
-        super().__init__()
 
     def put(self, key, item):
         """insert into cache"""
