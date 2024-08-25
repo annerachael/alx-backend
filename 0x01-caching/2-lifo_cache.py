@@ -17,14 +17,21 @@ class LIFOCache(BaseCaching):
         if key is None or item is None:
             return 
 
+        self.cache_data[key] = item
+
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            
-            lifo_key = self.order.pop()
-            del self.cache_data[lifo_key]
-            print("DISCARD: {}".format(lifo_key))
+            if self.order:
+                lifo_key = self.order.pop()
+                del self.cache_data[lifo_key]
+                print("DISCARD: {}".format(lifo_key))
         
+        if key not in self.order:
             self.order.append(key)
-            self.cache_data[key] = item
+
+        else:
+            if self.order[-1] != key:
+                self.order.remove(key)
+                self.order.append(key)
 
 
     def get(self, key):

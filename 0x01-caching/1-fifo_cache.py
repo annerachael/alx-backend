@@ -35,7 +35,6 @@ class FIFOCache(BaseCaching):
                 self.order.remove(key)
                 self.order.append(key)
 
-
     def get(self, key):
         """Get cache data"""
 
